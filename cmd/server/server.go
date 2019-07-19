@@ -7,8 +7,7 @@ import (
 )
 
 func main() {
-	dir := "./static"
-	staticFS := http.FileServer(http.Dir(dir))
+	staticFS := http.FileServer(http.Dir("./static"))
 
 	host := ":9999"
 	fmt.Printf("Serving on %s\n", host)

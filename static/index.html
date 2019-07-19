@@ -3,13 +3,22 @@
     <head>
         <meta charset="utf-8">
         <title>Draw wasm</title>
+        <style>
+            .color {
+                display: inline-block;
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                cursor: pointer;
+                margin: 10px;
+            }
+        </style>
     </head>
     <body>
-        <script src="/js/wasm_exec.tinygo.js"></script>
+        <script src="/js/wasm_exec.js"></script>
         <script>
             const go = new Go();
-console.log("what is Go");
-console.log(go);
+
             WebAssembly.instantiateStreaming(
                 fetch("/wasm/draw.wasm"),
                 go.importObject
@@ -17,5 +26,8 @@ console.log(go);
                 go.run(res.instance);
             });
         </script>
+
+        <canvas id="canvas"></canvas>
+        <div id="colors"></div>
     </body>
 </html>
