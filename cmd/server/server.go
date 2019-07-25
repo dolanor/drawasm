@@ -9,9 +9,9 @@ import (
 func main() {
 	staticFS := http.FileServer(http.Dir("./static"))
 
-	host := ":9999"
-	fmt.Printf("Serving on %s\n", host)
-	http.ListenAndServe(":9999", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+	host := "localhost:9999"
+	fmt.Printf("Serving on http://%s\n", host)
+	http.ListenAndServe(host, http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		// Set headers for wasm
 		w.Header().Add("Cache-Control", "no-cache")
 		if strings.HasSuffix(r.URL.Path, ".wasm") {
